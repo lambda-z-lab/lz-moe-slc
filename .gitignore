@@ -3,8 +3,16 @@
 venv/
 __pycache__/
 *.pyc
+*.egg-info/
+src/*.egg-info/
+dist/
+build/
 
-# LaTeX build artifacts
+# LaTeX build artifacts*.egg-info/
+src/*.egg-info/
+dist/
+build/
+
 *.aux
 *.log
 *.out

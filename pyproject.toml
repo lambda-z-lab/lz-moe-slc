@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lz-moe-slc"
+version = "1.0.0"
+description = "Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Carl Johan Rehn", email = "care02@gmail.com" }
+]
+dependencies = [
+    "torch>=2.0.0",
+    "ipython>=8.0.0",
+    "jupyter>=1.0.0",
+    "pytest>=7.0.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# Optional tool mapping for modern alternative installers like 'uv'
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu" }]

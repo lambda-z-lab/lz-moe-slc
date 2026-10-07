@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this software or conceptual framework in your research, please cite both the paper and the software repository using the metadata below."
+type: software
+title: "Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts"
+abstract: "Companion source code, unit tests, and benchmarking scripts for the paper 'Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts', exposing Lagrangian dual-variable router optimization and DeepSeek-style proportional bias routing mechanics."
+authors:
+  - family-names: "Rehn"
+    given-names: "Carl Johan"
+    orcid: "https://orcid.org/0009-0002-7844-0770"
+identifiers:
+  - type: doi
+    description: "The Concept DOI for all versions of this software repository"
+    value: "10.5281/zenodo.XXXXXXX"
+repository-code: "https://github.com/lambda-z-lab/lz-moe-slc"
+url: "https://lambda-z-lab.github.io/lz-moe-slc" # Ready for your upcoming Jekyll GitHub Page portal
+keywords:
+  - "Mixture of Experts"
+  - "Load Balancing"
+  - "DeepSeek"
+  - "Deep Learning"
+  - "Stochastic Control"
+  - "Constrained Optimization"
+license: "MIT"
+version: "1.0.0"
+date-released: "2026-10-10"
+preferred-citation:
+  type: article
+  title: "Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts"
+  authors:
+  - family-names: "Rehn"
+    given-names: "Carl Johan"
+    orcid: "https://orcid.org/0009-0002-7844-0770"
+  year: 2026
+  month: 10
+  journal: "arXiv preprint arXiv:26xx.xxxxx"
+  url: "https://github.com/lambda-z-lab/lz-moe-slc"
