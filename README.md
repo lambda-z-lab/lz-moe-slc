@@ -100,7 +100,7 @@ If you build upon this research, utilize the theoretical framework, or reference
   title = {Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts: Companion Code},
   year = {2026},
   publisher = {Zenodo},
-  doi = {10.5281/zenodo.XXXXXXX},
+  doi = {10.5281/zenodo.23214045},
   url = {https://github.com/lambda-z-lab/lz-moe-slc}
 }
 ```

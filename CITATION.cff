@@ -10,7 +10,7 @@ authors:
 identifiers:
   - type: doi
     description: "The Concept DOI for all versions of this software repository"
-    value: "10.5281/zenodo.XXXXXXX"
+    value: "10.5281/zenodo.23214045"
 repository-code: "https://github.com/lambda-z-lab/lz-moe-slc"
 url: "https://lambda-z-lab.github.io/lz-moe-slc" # Ready for your upcoming Jekyll GitHub Page portal
 keywords:
@@ -22,7 +22,7 @@ keywords:
   - "Constrained Optimization"
 license: "MIT"
 version: "1.0.0"
-date-released: "2026-10-10"
+date-released: "2026-10-07"
 preferred-citation:
   type: article
   title: "Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts"
