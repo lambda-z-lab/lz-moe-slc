@@ -1,7 +1,7 @@
 # Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23214045.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23214045.svg)](https://doi.org/10.5281/zenodo.23214045)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![PyTorch CPU](https://img.shields.io/badge/PyTorch-CPU%20Compatible-orange.svg)](https://pytorch.org/)
 [![DeepSeek](https://img.shields.io/badge/Baseline-DeepSeek-4D6BFE)](https://github.com/lambda-z-lab/lz-moe-slc)
