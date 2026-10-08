@@ -88,13 +88,6 @@ pytest tests/test_routers.py
 If you build upon this research, utilize the theoretical framework, or reference this code base, please cite it using the following BibTeX entry:
 
 ```bibtex
-@article{rehn2026stochastic,
-  title={Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts},
-  author={Rehn, Carl Johan},
-  journal={arXiv preprint arXiv:26xx.xxxxx},
-  year={2026}
-}
-
 @software{rehn2026lzmoeslc,
   author = {Rehn, Carl Johan},
   title = {Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts: Companion Code},
