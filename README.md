@@ -44,23 +44,23 @@ Let $B$ denote the mini-batch size, $T$ the sequence length (yielding a total of
 
 Given a latent token representation $\mathbf{x}_i \in \mathbb{R}^{d_\ell}$, the router scores token $i$ against expert $j$ via the scaled affinity:
 
-$$A_{ij} \;=\; \frac{\mathbf{x}_i^\top \mathbf{w}_j}{\sqrt{d_\ell}},$$
+$$A_{ij} = \frac{\mathbf{x}_i^\top \mathbf{w}_j}{\sqrt{d_\ell}},$$
 
 which functions as a scaled inner product. Letting $k$ denote the routing sparsity level (i.e., the number of selected experts per token), we define the per-token mean routing utility as the average selected affinity for a binary assignment matrix $P \in \{0, 1\}^{N \times E_r}$ subject to $\sum_{j=1}^{E_r} P_{ij} = k$:
 
-$$U(P, \mathbf{W}) \;=\; \frac{1}{N} \sum_{i=1}^{N} \sum_{j=1}^{E_r} P_{ij} A_{ij}.$$
+$$U(P, \mathbf{W}) = \frac{1}{N} \sum_{i=1}^{N} \sum_{j=1}^{E_r} P_{ij} A_{ij}.$$
 
 ### Stochastic Augmented Lagrangian Control (SLC)
 Now, we formalize the optimization-driven control loop. The Lagrangian router casts load balancing as a constrained utility maximization problem solved via adaptive control. Introducing per-expert dual prices $\mathbf{v} \in \mathbb{R}^{E_r}$ and a quadratic augmentation parameter $\rho > 0$, the empirical mini-batch augmented Lagrangian is expressed in terms of the per-token mean routing utility:
 
-$$\mathcal{L}(P, \mathbf{W}, \mathbf{v}) \;=\; U(P, \mathbf{W}) \;-\; \mathbf{v}^\top \hat{\mathbf{e}}_t \;-\; \frac{\rho}{2} \|\hat{\mathbf{e}}_t\|_2^2,$$
+$$\mathcal{L}(P, \mathbf{W}, \mathbf{v}) = U(P, \mathbf{W}) - \mathbf{v}^\top \hat{\mathbf{e}}_t - \frac{\rho}{2} \|\hat{\mathbf{e}}_t\|_2^2,$$
 
 where $\hat{\mathbf{e}}_t$ is the shared recursive load-error estimator defined in the paper.
 
 #### Duality-Adjusted Routing Affinity
 To stabilize the routing dynamics, the optimization framework computes a closed-loop control signal—the duality-adjusted routing affinity—which is fed directly into the active top-$k$ selection and softmax gating mechanism:
 
-$$\Psi_{ij}^{\text{SLC}} \;=\; A_{ij} - v_j - \rho \, \hat{e}_{t,j}.$$
+$$\Psi_{ij}^{\text{SLC}} = A_{ij} - v_j - \rho \, \hat{e}_{t,j}.$$
 
 Here, $\Psi_{ij}^{\text{SLC}}$ acts as the primary control input: the dual variables $v_j$ provide integral feedback via recursive dual-price estimation, while the recursive load errors $\hat{e}_{t,j}$ provide proportional feedback scaled by the augmented penalty parameter $\rho$.
 
