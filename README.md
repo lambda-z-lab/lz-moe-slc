@@ -64,16 +64,16 @@ $$\Psi_{ij}^{\text{SLC}} = A_{ij} - v_j - \rho \, \hat{e}_{t,j}.$$
 
 Here, $\Psi_{ij}^{\text{SLC}}$ acts as the primary control input: the dual variables $v_j$ provide integral feedback via recursive dual-price estimation, while the recursive load errors $\hat{e}_{t,j}$ provide proportional feedback scaled by the augmented penalty parameter $\rho$.
 
-#### Top-$k$ Selection and Unbiased Gating
-To map the duality-adjusted affinities into discrete execution paths, hard top-$k$ selection operates on the closed-loop control signal, whereas gating utilizes the *unbiased* token-expert affinities $A_{ij}$ for the selected subset. This design cleanly decouples routing decisions ("where to send") from feature weighting ("how much to weight"):
+#### Top-k Selection and Unbiased Gating
+To map the duality-adjusted affinities into discrete execution paths, hard top-k selection operates on the closed-loop control signal, whereas gating utilizes the *unbiased* token-expert affinities $A_{ij}$ for the selected subset. This design cleanly decouples routing decisions ("where to send") from feature weighting ("how much to weight"):
 
-$$\mathcal{K}_i = \text{Top-k}_{j} \left( \Psi_{ij}^{\text{SLC}} \right), \quad |\mathcal{K}_i| = k$$
+$$K_i = \text{Top-k}_{j} \left( \Psi_{ij}^{\text{SLC}} \right), \quad |K_i| = k$$
 
 $$G_{ij} = \text{softmax}_{j\in\mathcal{K}_i} \big( A_{ij} \big)$$
 
-where $G_{ij}$ denotes the gating weight for token $i$ assigned to expert $j \in \mathcal{K}_i$.
+where $G_{ij}$ denotes the gating weight for token $i$ assigned to expert $j \in K_i$.
 
-These discrete expert indices $\mathcal{K}_i$ and continuous gating weights $G_{ij}$ serve as the structural dispatch interface of the router, mapping abstract control signals and input tokens to their designated expert networks.
+These discrete expert indices $K_i$ and continuous gating weights $G_{ij}$ serve as the structural dispatch interface of the router, mapping abstract control signals and input tokens to their designated expert networks.
 
 ## 📊 Key Empirical Results & Visualizations
 
