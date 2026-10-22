@@ -69,7 +69,7 @@ To map the duality-adjusted affinities into discrete execution paths, hard top-k
 
 $$K_i = \text{Top-k}_{j} \left( \Psi_{ij}^{\text{SLC}} \right), \quad |K_i| = k$$
 
-$$G_{ij} = \text{softmax}_{j\in\mathcal{K}_i} \big( A_{ij} \big)$$
+$$G_{ij} = \text{softmax}_{j\in K_i } \big( A_{ij} \big)$$
 
 where $G_{ij}$ denotes the gating weight for token $i$ assigned to expert $j \in K_i$.
 
