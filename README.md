@@ -35,6 +35,46 @@ Historically, load balancing relies on heuristic auxiliary loss terms with rigid
 
 ---
 
+## 🧮 Methodology
+
+Following the architectural layout of modern open-weights models like DeepSeek-V3, we formulate the routing problem within a sparsely-gated Mixture-of-Experts layer operating downstream of a Multi-Head Latent Attention (MLA) block.
+
+### Geometry and Token-Expert Affinities
+Let $B$ denote the mini-batch size, $T$ the sequence length (yielding a total of $N = B \cdot T$ active tokens), $d_\ell$ the latent feature dimension, and $E_r$ the number of conditionally routed experts. Expert centroids $\mathbf{W} \in \mathbb{R}^{E_r \times d_\ell}$ are projected onto the unit sphere after every update step, ensuring $\|\mathbf{w}_j\|_2 = 1$ for all experts $j \in \{1, \dots, E_r\}$.
+
+Given a latent token representation $\mathbf{x}_i \in \mathbb{R}^{d_\ell}$, the router scores token $i$ against expert $j$ via the scaled affinity:
+
+$$A_{ij} \;=\; \frac{\mathbf{x}_i^\top \mathbf{w}_j}{\sqrt{d_\ell}},$$
+
+which functions as a scaled inner product. Letting $k$ denote the routing sparsity level (i.e., the number of selected experts per token), we define the per-token mean routing utility as the average selected affinity for a binary assignment matrix $P \in \{0, 1\}^{N \times E_r}$ subject to $\sum_{j=1}^{E_r} P_{ij} = k$:
+
+$$U(P, \mathbf{W}) \;=\; \frac{1}{N} \sum_{i=1}^{N} \sum_{j=1}^{E_r} P_{ij} A_{ij}.$$
+
+### Stochastic Augmented Lagrangian Control (SLC)
+Now, we formalize the optimization-driven control loop. The Lagrangian router casts load balancing as a constrained utility maximization problem solved via adaptive control. Introducing per-expert dual prices $\mathbf{v} \in \mathbb{R}^{E_r}$ and a quadratic augmentation parameter $\rho > 0$, the empirical mini-batch augmented Lagrangian is expressed in terms of the per-token mean routing utility:
+
+$$\mathcal{L}(P, \mathbf{W}, \mathbf{v}) \;=\; U(P, \mathbf{W}) \;-\; \mathbf{v}^\top \hat{\mathbf{e}}_t \;-\; \frac{\rho}{2} \|\hat{\mathbf{e}}_t\|_2^2,$$
+
+where $\hat{\mathbf{e}}_t$ is the shared recursive load-error estimator defined in the paper.
+
+#### Duality-Adjusted Routing Affinity
+To stabilize the routing dynamics, the optimization framework computes a closed-loop control signal—the duality-adjusted routing affinity—which is fed directly into the active top-$k$ selection and softmax gating mechanism:
+
+$$\Psi_{ij}^{\text{SLC}} \;=\; A_{ij} - v_j - \rho \, \hat{e}_{t,j}.$$
+
+Here, $\Psi_{ij}^{\text{SLC}}$ acts as the primary control input: the dual variables $v_j$ provide integral feedback via recursive dual-price estimation, while the recursive load errors $\hat{e}_{t,j}$ provide proportional feedback scaled by the augmented penalty parameter $\rho$.
+
+#### Top-$k$ Selection and Unbiased Gating
+To map the duality-adjusted affinities into discrete execution paths, hard top-$k$ selection operates on the closed-loop control signal, whereas gating utilizes the *unbiased* token-expert affinities $A_{ij}$ for the selected subset. This design cleanly decouples routing decisions ("where to send") from feature weighting ("how much to weight"):
+
+$$\mathcal{K}_i = \operatorname{Top-k}_{j}\!\left( \Psi_{ij}^{\text{SLC}} \right), \quad |\mathcal{K}_i| = k$$
+
+$$G_{ij} = \operatorname{softmax}_{j\in\mathcal{K}_i}\!\big( A_{ij} \big)$$
+
+where $G_{ij}$ denotes the gating weight for token $i$ assigned to expert $j \in \mathcal{K}_i$.
+
+These discrete expert indices $\mathcal{K}_i$ and continuous gating weights $G_{ij}$ serve as the structural dispatch interface of the router, mapping abstract control signals and input tokens to their designated expert networks.
+
 ## 📊 Key Empirical Results & Visualizations
 
 ### Experimental Setup Overview
