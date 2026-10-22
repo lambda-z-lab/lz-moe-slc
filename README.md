@@ -121,6 +121,31 @@ As illustrated, the SLC router achieves a stable saddle-point equilibrium by ste
 ### Expert Geometry, Diversity, and Micro-Clustering
 To evaluate the impact of dual routing control on internal representations, we perform a spectral analysis of the expert centroid matrix $\mathbf{W}$. The following table summarizes the geometric control diagnostics across all three evaluated regimes at iteration $30,000$. As shown in the table, SLC prevents the representational collapse common in heuristic routers. The spectral ratio of the centroid singular values ($S_1/S_{\text{last}}$) increases from $1.49$ in the baseline to $6.33$ under SLC, indicating a well-conditioned singular value spectrum that avoids dimensional dominance. Furthermore, the mean pairwise cosine similarity among expert centroids drops to $-0.037$ under SLC and $-0.039$ under the regime-switch experiment, indicating that expert representations have evolved into near-orthogonal basis vectors (compared to DeepSeek's diffuse similarity of $+0.007$).
 
+| Metric | DeepSeek | SLC (Ours) | Regime-Switch |
+| :--- | :---: | :---: | :---: |
+| Spectral Ratio ($S_1 / S_{\text{last}}$) | 1.49 | **6.33** | 3.11 |
+| Mean Cosine Sim ($\text{avg\_sim}$) | $+0.0073$ | **$-0.0370$** | $-0.0390$ |
+| Load Std Dev ($\text{std}\%$) | 2.36\% | **0.89\%** | 0.59\% |
+
+To visualize these structural differences, the plots in the master diagnostic stack detail the cross-expert cosine similarity heatmaps alongside the corresponding load error distributions. While the DeepSeek baseline exhibits a diffuse, uncoordinated similarity profile and large variations in load distribution, SLC and the regime-switch experiment display structured micro-clusters of functional specialization paired with evenly distributed expert loads. The Lagrangian dual prices compel the 16 experts to operate as an orthogonalized, multi-faceted basis set rather than collapsing into redundant, overlapping feature extractors.
+
+<div align="center">
+  <figure>
+    <img src="plots/slc_diagnostic_layer_6-1.png" width="65%" alt="SLC Diagnostic Stack">
+    <figcaption style="text-align: center; max-width: 65%; margin: 5px auto 25px auto;"><b>SLC:</b> Exhibiting clear micro-clustering (experts 10–13).</figcaption>
+  </figure>
+
+  <figure>
+    <img src="plots/deepseek_bias_diagnostic_layer_6-1.png" width="65%" alt="Deepseek Bias Diagnostic Stack">
+    <figcaption style="text-align: center; max-width: 65%; margin: 5px auto 25px auto;"><b>DeepSeek Bias:</b> Displaying diffuse micro-clustering.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="plots/regime_switch_diagnostic_layer_6-1.png" width="65%" alt="Regime Switch Diagnostic Stack">
+    <figcaption style="text-align: center; max-width: 65%; margin: 5px auto 25px auto;"><b>Regime-Switch:</b> Exhibiting micro-clustering (experts 11–13).</figcaption>
+  </figure>
+</div>
+
 ---
 
 ## 💻 Installation & Environment Setup
