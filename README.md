@@ -99,21 +99,30 @@ To ensure that soft expected assignment probabilities accurately reflect hard to
 ### Primal-Dual Convergence Dynamics and Duality Gaps
 A primary advantage of formulating Mixture-of-Experts load balancing through an augmented Lagrangian framework is the availability of an explicit optimization-theoretic convergence metric (the duality gap). To evaluate the primal-dual dynamics, the following plots show the trajectories of the primal utility, dual values, and duality gap across three regimes, focusing on the terminal layer (Layer 6).
 
-<table align="center" width="100%" style="text-align: center; border: none;">
-  <tr>
-    <td width="33%" style="border: none; text-align: center; vertical-align: top;">
-      <img src="plots/slc_duality_convergence_layer_6-1.png" width="100%" alt="Pure-SLC" style="display: block; margin: 0 auto;">
-      <div style="text-align: center; margin-top: 5px;"><b>SLC</b></div>
-    </td>
-    <td width="33%" style="border: none; text-align: center; vertical-align: top;">
-      <img src="plots/deepseek_bias_duality_convergence_layer_6-1.png" width="100%" alt="DeepSeek Bias" style="display: block; margin: 0 auto;">
-      <div style="text-align: center; margin-top: 5px;"><b>DeepSeek Bias</b></div>
-    </td>
-    <td width="33%" style="border: none; text-align: center; vertical-align: top;">
-      <img src="plots/regime_switch_duality_convergence_layer_6-1.png" width="100%" alt="Regime-Switch" style="display: block; margin: 0 auto;">
-      <div style="text-align: center; margin-top: 5px;"><b>Regime-Switch</b></div>
-    </td>
-  </tr>
+<table align="center" width="100%" style="border: none;">
+  <thead>
+    <tr>
+      <th align="center" width="33%"></th>
+      <th align="center" width="33%"></th>
+      <th align="center" width="33%"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center" style="border: none;">
+        <img src="plots/slc_duality_convergence_layer_6-1.png" width="100%" alt="SLC"><br>
+        <b>SLC</b>
+      </td>
+      <td align="center" style="border: none;">
+        <img src="plots/deepseek_bias_duality_convergence_layer_6-1.png" width="100%" alt="DeepSeek Bias"><br>
+        <b>DeepSeek Bias</b>
+      </td>
+      <td align="center" style="border: none;">
+        <img src="plots/regime_switch_duality_convergence_layer_6-1.png" width="100%" alt="Regime-Switch"><br>
+        <b>Regime-Switch</b>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 As illustrated, the SLC router achieves a stable saddle-point equilibrium by step $20,000$, with the duality gap dropping below $0.085\%$. The dual objective values smoothly reflect the satisfaction of the load constraints without high-frequency chattering, illustrating the efficiency of the momentum filter and $\epsilon$-insensitive dead-band. In contrast, the DeepSeek baseline with a proportional bias displays a wider divergence band and settles at a higher final duality gap of $3.64\%$, reflecting the high penalties required to enforce expert load distributions and the absence of the augmented Lagrangian's local convexity. Most notably, the regime-switch experiment captures the adaptive elasticity of SLC: when SLC is abruptly activated at step $25,000$ following training under DeepSeek's sluggish baseline, the dual variables immediately re-orient and absorb the transient shock, reducing the duality gap to $0.28\%$ by step $30,000$.
