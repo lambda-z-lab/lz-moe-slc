@@ -67,9 +67,9 @@ Here, $\Psi_{ij}^{\text{SLC}}$ acts as the primary control input: the dual varia
 #### Top-$k$ Selection and Unbiased Gating
 To map the duality-adjusted affinities into discrete execution paths, hard top-$k$ selection operates on the closed-loop control signal, whereas gating utilizes the *unbiased* token-expert affinities $A_{ij}$ for the selected subset. This design cleanly decouples routing decisions ("where to send") from feature weighting ("how much to weight"):
 
-$$\mathcal{K}_i = \operatorname{Top-k}_{j}\!\left( \Psi_{ij}^{\text{SLC}} \right), \quad |\mathcal{K}_i| = k$$
+$$\mathcal{K}_i = \text{Top-k}_{j}\!\left( \Psi_{ij}^{\text{SLC}} \right), \quad |\mathcal{K}_i| = k$$
 
-$$G_{ij} = \operatorname{softmax}_{j\in\mathcal{K}_i}\!\big( A_{ij} \big)$$
+$$G_{ij} = \text{softmax}_{j\in\mathcal{K}_i}\!\big( A_{ij} \big)$$
 
 where $G_{ij}$ denotes the gating weight for token $i$ assigned to expert $j \in \mathcal{K}_i$.
 
