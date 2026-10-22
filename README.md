@@ -123,27 +123,21 @@ To evaluate the impact of dual routing control on internal representations, we p
 
 | Metric | DeepSeek | SLC (Ours) | Regime-Switch |
 | :--- | :---: | :---: | :---: |
-| Spectral Ratio ($S_1 / S_{\text{last}}$) | 1.49 | **6.33** | 3.11 |
-| Mean Cosine Sim ($\text{avg\_sim}$) | $+0.0073$ | **$-0.0370$** | $-0.0390$ |
-| Load Std Dev ($\text{std}\%$) | 2.36\% | **0.89\%** | 0.59\% |
+| Spectral Ratio (<i>S</i><sub>1</sub> / <i>S</i><sub>last</sub>) | 1.49 | **6.33** | 3.11 |
+| Mean Cosine Sim (avg_sim) | $+0.0073$ | **$-0.0370$** | $-0.0390$ |
+| Load Std Dev (std%) | 2.36\% | **0.89\%** | 0.59\% |
 
 To visualize these structural differences, the plots in the master diagnostic stack detail the cross-expert cosine similarity heatmaps alongside the corresponding load error distributions. While the DeepSeek baseline exhibits a diffuse, uncoordinated similarity profile and large variations in load distribution, SLC and the regime-switch experiment display structured micro-clusters of functional specialization paired with evenly distributed expert loads. The Lagrangian dual prices compel the 16 experts to operate as an orthogonalized, multi-faceted basis set rather than collapsing into redundant, overlapping feature extractors.
 
 <div align="center">
-  <figure>
-    <img src="plots/slc_diagnostic_layer_6-1.png" width="65%" alt="SLC Diagnostic Stack">
-    <figcaption style="text-align: center; max-width: 65%; margin: 5px auto 25px auto;"><b>SLC:</b> Exhibiting clear micro-clustering (experts 10–13).</figcaption>
-  </figure>
-
-  <figure>
-    <img src="plots/deepseek_bias_diagnostic_layer_6-1.png" width="65%" alt="Deepseek Bias Diagnostic Stack">
-    <figcaption style="text-align: center; max-width: 65%; margin: 5px auto 25px auto;"><b>DeepSeek Bias:</b> Displaying diffuse micro-clustering.</figcaption>
-  </figure>
-
-  <figure>
-    <img src="plots/regime_switch_diagnostic_layer_6-1.png" width="65%" alt="Regime Switch Diagnostic Stack">
-    <figcaption style="text-align: center; max-width: 65%; margin: 5px auto 25px auto;"><b>Regime-Switch:</b> Exhibiting micro-clustering (experts 11–13).</figcaption>
-  </figure>
+  <div style="width: 65%; display: block; margin: 0 auto; text-align: left;">
+    <img src="plots/slc_diagnostic_layer_6-1.png" width="100%" alt="SLC Diagnostic Stack" style="display: block;">
+    <p style="margin-top: 5px; margin-bottom: 30px;"><b>SLC:</b> Exhibiting clear micro-clustering (experts 10–13).</p>
+    <img src="plots/deepseek_bias_diagnostic_layer_6-1.png" width="100%" alt="Deepseek Bias Diagnostic Stack" style="display: block;">
+    <p style="margin-top: 5px; margin-bottom: 30px;"><b>DeepSeek Bias:</b> Displaying diffuse micro-clustering.</p>
+    <img src="plots/regime_switch_diagnostic_layer_6-1.png" width="100%" alt="Regime Switch Diagnostic Stack" style="display: block;">
+    <p style="margin-top: 5px; margin-bottom: 0px;"><b>Regime-Switch:</b> Exhibiting micro-clustering (experts 11–13).</p>
+  </div>
 </div>
 
 ---
