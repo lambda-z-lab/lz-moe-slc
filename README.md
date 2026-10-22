@@ -101,17 +101,17 @@ A primary advantage of formulating Mixture-of-Experts load balancing through an 
 
 <table align="center" width="100%" style="text-align: center; border: none;">
   <tr>
-    <td width="33%" style="border: none; text-align: center;">
-      <img src="plots/slc_duality_convergence_layer_6-1.png" width="100%" alt="Pure-SLC"><br>
-      <b>SLC</b>
+    <td width="33%" style="border: none; text-align: center; vertical-align: top;">
+      <img src="plots/slc_duality_convergence_layer_6-1.png" width="100%" alt="Pure-SLC" style="display: block; margin: 0 auto;">
+      <div style="text-align: center; margin-top: 5px;"><b>SLC</b></div>
     </td>
-    <td width="33%" style="border: none; text-align: center;">
-      <img src="plots/deepseek_bias_duality_convergence_layer_6-1.png" width="100%" alt="DeepSeek Bias"><br>
-      <b>DeepSeek Bias</b>
+    <td width="33%" style="border: none; text-align: center; vertical-align: top;">
+      <img src="plots/deepseek_bias_duality_convergence_layer_6-1.png" width="100%" alt="DeepSeek Bias" style="display: block; margin: 0 auto;">
+      <div style="text-align: center; margin-top: 5px;"><b>DeepSeek Bias</b></div>
     </td>
-    <td width="33%" style="border: none; text-align: center;">
-      <img src="plots/regime_switch_duality_convergence_layer_6-1.png" width="100%" alt="Regime-Switch"><br>
-      <b>Regime-Switch</b>
+    <td width="33%" style="border: none; text-align: center; vertical-align: top;">
+      <img src="plots/regime_switch_duality_convergence_layer_6-1.png" width="100%" alt="Regime-Switch" style="display: block; margin: 0 auto;">
+      <div style="text-align: center; margin-top: 5px;"><b>Regime-Switch</b></div>
     </td>
   </tr>
 </table>
