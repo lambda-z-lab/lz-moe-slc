@@ -40,13 +40,13 @@ Historically, load balancing relies on heuristic auxiliary loss terms with rigid
 Following the architectural layout of modern open-weights models like DeepSeek-V3, we formulate the routing problem within a sparsely-gated Mixture-of-Experts layer operating downstream of a Multi-Head Latent Attention (MLA) block.
 
 ### Geometry and Token-Expert Affinities
-Let $B$ denote the mini-batch size, $T$ the sequence length (yielding a total of $N = B \times T$ active tokens), $d_l$ the latent feature dimension, and $E_r$ the number of conditionally routed experts. Expert centroids $\mathbf{W} \in \mathbb{R}^{E_r \times d_l}$ are projected onto the unit sphere after every update step, ensuring $\|\mathbf{w}_j\|_2 = 1$ for all experts $j \in \{1, \dots, E_r\}$.
+Let $B$ denote the mini-batch size, $T$ the sequence length (yielding a total of $N = B \times T$ active tokens), $d_l$ the latent feature dimension, and $E_r$ the number of conditionally routed experts. Expert centroids $\mathbf{W} \in \mathbb{R}^{E_r \times d_l}$ are projected onto the unit sphere after every update step, ensuring $`\|\mathbf{w}_j\|_2 = 1 \text{ for all experts } j \in \{1, \dots, E_r\}`$.
 
 Given a latent token representation $\mathbf{x}_i \in \mathbb{R}^{d_l}$, the router scores token $i$ against expert $j$ via the scaled affinity:
 
 $$A_{ij} = \frac{\mathbf{x}_i^\top \mathbf{w}_j}{\sqrt{d_\ell}},$$
 
-which functions as a scaled inner product. Letting $k$ denote the routing sparsity level (i.e., the number of selected experts per token), we define the per-token mean routing utility as the average selected affinity for a binary assignment matrix $P \in \{0,1\}^{N \times E_r}$ subject to $\sum_{j=1}^{E_r} P_{ij} = k$:
+which functions as a scaled inner product. Letting $k$ denote the routing sparsity level (i.e., the number of selected experts per token), we define the per-token mean routing utility as the average selected affinity for a binary assignment matrix $`P \in \{0, 1\}^{N \times E_r}`$ subject to $\sum_{j=1}^{E_r} P_{ij} = k$:
 
 $$U(P, \mathbf{W}) = \frac{1}{N} \sum_{i=1}^{N} \sum_{j=1}^{E_r} P_{ij} A_{ij}.$$
 
