@@ -40,7 +40,7 @@ Historically, load balancing relies on heuristic auxiliary loss terms with rigid
 Following the architectural layout of modern open-weights models like DeepSeek-V3, we formulate the routing problem within a sparsely-gated Mixture-of-Experts layer operating downstream of a Multi-Head Latent Attention (MLA) block.
 
 ### Geometry and Token-Expert Affinities
-Let $B$ denote the mini-batch size, $T$ the sequence length (yielding a total of $N = B \cdot T$ active tokens), $d_\ell$ the latent feature dimension, and $E_r$ the number of conditionally routed experts. Expert centroids $\mathbf{W} \in \mathbb{R}^{E_r \times d_\ell}$ are projected onto the unit sphere after every update step, ensuring $\|\mathbf{w}_j\|_2 = 1$ for all experts $j \in \{1, \dots, E_r\}$.
+Let $B$ denote the mini-batch size, $T$ the sequence length (yielding a total of $N = B \times T$ active tokens), $d_l$ the latent feature dimension, and $E_r$ the number of conditionally routed experts. Expert centroids $\mathbf{W} \in \mathbb{R}^{E_r \times d_l}$ are projected onto the unit sphere after every update step, ensuring $\|\mathbf{w}_j\|_2 = 1$ for all experts $j \in \{1, \dots, E_r\}$.
 
 Given a latent token representation $\mathbf{x}_i \in \mathbb{R}^{d_\ell}$, the router scores token $i$ against expert $j$ via the scaled affinity:
 
@@ -67,9 +67,9 @@ Here, $\Psi_{ij}^{\text{SLC}}$ acts as the primary control input: the dual varia
 #### Top-$k$ Selection and Unbiased Gating
 To map the duality-adjusted affinities into discrete execution paths, hard top-$k$ selection operates on the closed-loop control signal, whereas gating utilizes the *unbiased* token-expert affinities $A_{ij}$ for the selected subset. This design cleanly decouples routing decisions ("where to send") from feature weighting ("how much to weight"):
 
-$$\mathcal{K}_i = \text{Top-k}_{j}\!\left( \Psi_{ij}^{\text{SLC}} \right), \quad |\mathcal{K}_i| = k$$
+$$\mathcal{K}_i = \text{Top-k}_{j} \left( \Psi_{ij}^{\text{SLC}} \right), \quad |\mathcal{K}_i| = k$$
 
-$$G_{ij} = \text{softmax}_{j\in\mathcal{K}_i}\!\big( A_{ij} \big)$$
+$$G_{ij} = \text{softmax}_{j\in\mathcal{K}_i} \big( A_{ij} \big)$$
 
 where $G_{ij}$ denotes the gating weight for token $i$ assigned to expert $j \in \mathcal{K}_i$.
 
