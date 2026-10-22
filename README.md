@@ -96,6 +96,26 @@ Below, the table summarizes the primary performance metrics comparing the auxili
 
 To ensure that soft expected assignment probabilities accurately reflect hard token dispatch counts, routing calibration is evaluated using both the Mean Absolute Error ($\text{MAE}$) and the Kullback-Leibler ($\text{KL}$) divergence between soft routing probabilities and normalized hard token histograms. Calibration verification confirms that both models maintain tight correspondence (staying well below a $2\%$ error threshold) validating the reliability of the routing probabilities. Specifically, Stochastic Augmented Lagrangian Control achieves superior calibration with an $\text{MAE}$ of $1.15\%$ ($\text{KL} = 0.00166$) compared to the DeepSeek baseline's $\text{MAE}$ of $1.71\%$ ($\text{KL} = 0.00327$). This shows that SLC's dual-controlled feedback loop achieves a superior distribution than the fixed update gain of proportional bias routing.
 
+### Primal-Dual Convergence Dynamics and Duality Gaps
+A primary advantage of formulating Mixture-of-Experts load balancing through an augmented Lagrangian framework is the availability of an explicit optimization-theoretic convergence metric (the duality gap). To evaluate the primal-dual dynamics, the following plots show the trajectories of the primal utility, dual values, and duality gap across three regimes, focusing on the terminal layer (Layer 6).
+
+<table align="center" width="100%" style="text-align: center; border: none;">
+  <tr>
+    <td width="33%" style="border: none; text-align: center;">
+      <img src="plots/slc_duality_convergence_layer_6-1.png" width="100%" alt="Pure-SLC"><br>
+      <b>SLC</b>
+    </td>
+    <td width="33%" style="border: none; text-align: center;">
+      <img src="plots/deepseek_bias_duality_convergence_layer_6-1.png" width="100%" alt="DeepSeek Bias"><br>
+      <b>DeepSeek Bias</b>
+    </td>
+    <td width="33%" style="border: none; text-align: center;">
+      <img src="plots/regime_switch_duality_convergence_layer_6-1.png" width="100%" alt="Regime-Switch"><br>
+      <b>Regime-Switch</b>
+    </td>
+  </tr>
+</table>
+
 ---
 
 ## 💻 Installation & Environment Setup
