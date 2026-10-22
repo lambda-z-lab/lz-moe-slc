@@ -58,7 +58,7 @@ $$\mathcal{L}(P, \mathbf{W}, \mathbf{v}) = U(P, \mathbf{W}) - \mathbf{v}^\top \h
 where $\hat{\mathbf{e}}_t$ is the shared recursive load-error estimator defined in the paper.
 
 #### Duality-Adjusted Routing Affinity
-To stabilize the routing dynamics, the optimization framework computes a closed-loop control signal—the duality-adjusted routing affinity—which is fed directly into the active top-$k$ selection and softmax gating mechanism:
+To stabilize the routing dynamics, the optimization framework computes a closed-loop control signal (the duality-adjusted routing affinity) which is fed directly into the active top-k selection and softmax gating mechanism:
 
 $$\Psi_{ij}^{\text{SLC}} = A_{ij} - v_j - \rho \, \hat{e}_{t,j}.$$
 
