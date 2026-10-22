@@ -42,7 +42,7 @@ Following the architectural layout of modern open-weights models like DeepSeek-V
 ### Geometry and Token-Expert Affinities
 Let $B$ denote the mini-batch size, $T$ the sequence length (yielding a total of $N = B \times T$ active tokens), $d_l$ the latent feature dimension, and $E_r$ the number of conditionally routed experts. Expert centroids $\mathbf{W} \in \mathbb{R}^{E_r \times d_l}$ are projected onto the unit sphere after every update step, ensuring $\|\mathbf{w}_j\|_2 = 1$ for all experts $j \in \{1, \dots, E_r\}$.
 
-Given a latent token representation $\mathbf{x}_i \in \mathbb{R}^{d_\ell}$, the router scores token $i$ against expert $j$ via the scaled affinity:
+Given a latent token representation $\mathbf{x}_i \in \mathbb{R}^{d_l}$, the router scores token $i$ against expert $j$ via the scaled affinity:
 
 $$A_{ij} = \frac{\mathbf{x}_i^\top \mathbf{w}_j}{\sqrt{d_\ell}},$$
 
