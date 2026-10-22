@@ -131,11 +131,11 @@ To visualize these structural differences, the plots in the master diagnostic st
 
 <div align="center">
   <div style="width: 65%; display: block; margin: 0 auto; text-align: left;">
-    <img src="plots/slc_diagnostic_layer_6-1.png" width="100%" alt="SLC Diagnostic Stack" style="display: block;">
+    <img src="plots/slc_diagnostic_layer_6-1.png" width="65%" alt="SLC Diagnostic Stack" style="display: block;">
     <p style="margin-top: 5px; margin-bottom: 30px;"><b>SLC:</b> Exhibiting clear micro-clustering (experts 10–13).</p>
-    <img src="plots/deepseek_bias_diagnostic_layer_6-1.png" width="100%" alt="Deepseek Bias Diagnostic Stack" style="display: block;">
+    <img src="plots/deepseek_bias_diagnostic_layer_6-1.png" width="65%" alt="Deepseek Bias Diagnostic Stack" style="display: block;">
     <p style="margin-top: 5px; margin-bottom: 30px;"><b>DeepSeek Bias:</b> Displaying diffuse micro-clustering.</p>
-    <img src="plots/regime_switch_diagnostic_layer_6-1.png" width="100%" alt="Regime Switch Diagnostic Stack" style="display: block;">
+    <img src="plots/regime_switch_diagnostic_layer_6-1.png" width="65%" alt="Regime Switch Diagnostic Stack" style="display: block;">
     <p style="margin-top: 5px; margin-bottom: 0px;"><b>Regime-Switch:</b> Exhibiting micro-clustering (experts 11–13).</p>
   </div>
 </div>
