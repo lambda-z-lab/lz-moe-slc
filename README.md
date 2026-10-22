@@ -35,42 +35,6 @@ Historically, load balancing relies on heuristic auxiliary loss terms with rigid
 
 ---
 
-## 🧮 Methodology
-
-Following the architectural layout of modern open-weights models like DeepSeek-V3, we formulate the routing problem within a sparsely-gated Mixture-of-Experts layer operating downstream of a Multi-Head Latent Attention (MLA) block.
-
-### Geometry and Token-Expert Affinities
-Let $B$ denote the mini-batch size, $T$ the sequence length (yielding a total of $N = B \cdot T$ active tokens), $d_\ell$ the latent feature dimension, and $E_r$ the number of conditionally routed experts. Expert centroids $\mathbf{W} \in \mathbb{R}^{E_r \times d_\ell}$ are projected onto the unit sphere after every update step, ensuring $\|\mathbf{w}_j\|_2 = 1$ for all experts $j \in \{1, \dots, E_r\}$.
-
-Given a latent token representation $\mathbf{x}_i \in \mathbb{R}^{d_\ell}$, the router scores token $i$ against expert $j$ via the scaled affinity:
-$$A_{ij} \;=\; \frac{\mathbf{x}_i^\top \mathbf{w}_j}{\sqrt{d_\ell}},$$
-which functions as a scaled inner product. Letting $k$ denote the routing sparsity level (i.e., the number of selected experts per token), we define the per-token mean routing utility as the average selected affinity for a binary assignment matrix $P \in \{0, 1\}^{N \times E_r}$ subject to $\sum_{j=1}^{E_r} P_{ij} = k$:
-$$U(P, \mathbf{W}) \;=\; \frac{1}{N} \sum_{i=1}^{N} \sum_{j=1}^{E_r} P_{ij} A_{ij}.$$
-
-### Stochastic Augmented Lagrangian Control (SLC)
-Now, we formalize the optimization-driven control loop. The Lagrangian router casts load balancing as a constrained utility maximization problem solved via adaptive control. Introducing per-expert dual prices $\mathbf{v} \in \mathbb{R}^{E_r}$ and a quadratic augmentation parameter $\rho > 0$, the empirical mini-batch augmented Lagrangian is expressed in terms of the per-token mean routing utility:
-$$\mathcal{L}(P, \mathbf{W}, \mathbf{v}) \;=\; U(P, \mathbf{W}) \;-\; \mathbf{v}^\top \hat{\mathbf{e}}_t \;-\; \frac{\rho}{2} \|\hat{\mathbf{e}}_t\|_2^2,$$
-where $\hat{\mathbf{e}}_t$ is the shared recursive load-error estimator defined in the paper.
-
-#### Duality-Adjusted Routing Affinity
-To stabilize the routing dynamics, the optimization framework computes a closed-loop control signal—the duality-adjusted routing affinity, which is fed directly into the active top-$k$ selection and softmax gating mechanism:
-$$\Psi_{ij}^{\text{SLC}} \;=\; A_{ij} - v_j - \rho \, \hat{e}_{t,j}.$$
-Here, $\Psi_{ij}^{\text{SLC}}$ acts as the primary control input: the dual variables $v_j$ provide integral feedback via recursive dual-price estimation, while the recursive load errors $\hat{e}_{t,j}$ provide proportional feedback scaled by the augmented penalty parameter $\rho$.
-
-#### Top-$k$ Selection and Unbiased Gating
-To map the duality-adjusted affinities into discrete execution paths, hard top-$k$ selection operates on the closed-loop control signal, whereas gating utilizes the *unbiased* token-expert affinities $A_{ij}$ for the selected subset. This design cleanly decouples routing decisions (&ldquo;where to send&rdquo;) from feature weighting (&ldquo;how much to weight&rdquo;):
-
-$$\begin{aligned}
-\mathcal{K}_i &= \operatorname{Top-k}_{j}\!\left( \Psi_{ij}^{\text{SLC}} \right), \qquad |\mathcal{K}_i| = k, \\
-G_{ij} &= \operatorname{softmax}_{j\in\mathcal{K}_i}\!\big( A_{ij} \big),
-\end{aligned}$$
-
-where $G_{ij}$ denotes the gating weight for token $i$ assigned to expert $j \in \mathcal{K}_i$.
-
-These discrete expert indices $\mathcal{K}_i$ and continuous gating weights $G_{ij}$ serve as the structural dispatch interface of the router, mapping abstract control signals and input tokens to their designated expert networks.
-
----
-
 ## 📊 Key Empirical Results & Visualizations
 
 ### Experimental Setup Overview
@@ -91,54 +55,6 @@ Below, the table summarizes the primary performance metrics comparing the auxili
 | **SLC MoE (Ours)** | **1.6991** | **0.0057** | **0.085%** | 269.23 |
 
 To ensure that soft expected assignment probabilities accurately reflect hard token dispatch counts, routing calibration is evaluated using both the Mean Absolute Error ($\text{MAE}$) and the Kullback-Leibler ($\text{KL}$) divergence between soft routing probabilities and normalized hard token histograms. Calibration verification confirms that both models maintain tight correspondence (staying well below a $2\%$ error threshold) validating the reliability of the routing probabilities. Specifically, Stochastic Augmented Lagrangian Control achieves superior calibration with an $\text{MAE}$ of $1.15\%$ ($\text{KL} = 0.00166$) compared to the DeepSeek baseline's $\text{MAE}$ of $1.71\%$ ($\text{KL} = 0.00327$). This shows that SLC's dual-controlled feedback loop achieves a superior distribution than the fixed update gain of proportional bias routing.
-
-### Primal-Dual Convergence Dynamics and Duality Gaps
-A primary advantage of formulating Mixture-of-Experts load balancing through an augmented Lagrangian framework is the availability of an explicit optimization-theoretic convergence metric (the duality gap). To evaluate the primal-dual dynamics, the following plots show the trajectories of the primal utility, dual values, and duality gap across three regimes, focusing on the terminal layer (Layer 6).
-
-<div align="center" style="display: flex; justify-content: center; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
-  <div style="flex: 1; min-width: 250px; text-align: center;">
-    <img src="plots/slc_duality_convergence_layer_6-1.png" width="100%" alt="Pure-SLC" style="border: none; box-shadow: none;">
-    <br><b>SLC</b>
-  </div>
-  <div style="flex: 1; min-width: 250px; text-align: center;">
-    <img src="plots/deepseek_bias_duality_convergence_layer_6-1.png" width="100%" alt="DeepSeek Bias" style="border: none; box-shadow: none;">
-    <br><b>DeepSeek Bias</b>
-  </div>
-  <div style="flex: 1; min-width: 250px; text-align: center;">
-    <img src="plots/regime_switch_duality_convergence_layer_6-1.png" width="100%" alt="Regime-Switch" style="border: none; box-shadow: none;">
-    <br><b>Regime-Switch</b>
-  </div>
-</div>
-
-As illustrated, the SLC router achieves a stable saddle-point equilibrium by step $20,000$, with the duality gap dropping below $0.085\%$. The dual objective values smoothly reflect the satisfaction of the load constraints without high-frequency chattering, illustrating the efficiency of the momentum filter and $\epsilon$-insensitive dead-band. In contrast, the DeepSeek baseline with a proportional bias displays a wider divergence band and settles at a higher final duality gap of $3.64\%$, reflecting the high penalties required to enforce expert load distributions and the absence of the augmented Lagrangian's local convexity. Most notably, the regime-switch experiment captures the adaptive elasticity of SLC: when SLC is abruptly activated at step $25,000$ following training under DeepSeek's sluggish baseline, the dual variables immediately re-orient and absorb the transient shock, reducing the duality gap to $0.28\%$ by step $30,000$.
-
-### Expert Geometry, Diversity, and Micro-Clustering
-To evaluate the impact of dual routing control on internal representations, we perform a spectral analysis of the expert centroid matrix $\mathbf{W}$. The following table summarizes the geometric control diagnostics across all three evaluated regimes at iteration $30,000$. As shown in the table, SLC prevents the representational collapse common in heuristic routers. The spectral ratio of the centroid singular values ($S_1/S_{\text{last}}$) increases from $1.49$ in the baseline to $6.33$ under SLC, indicating a well-conditioned singular value spectrum that avoids dimensional dominance. Furthermore, the mean pairwise cosine similarity among expert centroids drops to $-0.037$ under SLC and $-0.039$ under the regime-switch experiment, indicating that expert representations have evolved into near-orthogonal basis vectors (compared to DeepSeek's diffuse similarity of $+0.007$).
-
-| Metric | DeepSeek | SLC (Ours) | Regime-Switch |
-| :--- | :---: | :---: | :---: |
-| Spectral Ratio ($S_1 / S_{\text{last}}$) | 1.49 | **6.33** | 3.11 |
-| Mean Cosine Sim ($\text{avg\_sim}$) | $+0.0073$ | **$-0.0370$** | $-0.0390$ |
-| Load Std Dev ($\text{std}\%$) | 2.36\% | **0.89\%** | 0.59\% |
-
-To visualize these structural differences, the plots in the master diagnostic stack detail the cross-expert cosine similarity heatmaps alongside the corresponding load error distributions. While the DeepSeek baseline exhibits a diffuse, uncoordinated similarity profile and large variations in load distribution, SLC and the regime-switch experiment display structured micro-clusters of functional specialization paired with evenly distributed expert loads. The Lagrangian dual prices compel the 16 experts to operate as an orthogonalized, multi-faceted basis set rather than collapsing into redundant, overlapping feature extractors.
-
-<div align="center">
-  <figure>
-    <img src="plots/slc_diagnostic_layer_6-1.png" width="65%" alt="SLC Diagnostic Stack">
-    <figcaption style="text-align: center; max-width: 65%; margin: 5px auto 25px auto;"><b>SLC:</b> Exhibiting clear micro-clustering (experts 10–13).</figcaption>
-  </figure>
-
-  <figure>
-    <img src="plots/deepseek_bias_diagnostic_layer_6-1.png" width="65%" alt="Deepseek Bias Diagnostic Stack">
-    <figcaption style="text-align: center; max-width: 65%; margin: 5px auto 25px auto;"><b>DeepSeek Bias:</b> Displaying diffuse micro-clustering.</figcaption>
-  </figure>
-
-  <figure>
-    <img src="plots/regime_switch_diagnostic_layer_6-1.png" width="65%" alt="Regime Switch Diagnostic Stack">
-    <figcaption style="text-align: center; max-width: 65%; margin: 5px auto 25px auto;"><b>Regime-Switch:</b> Exhibiting micro-clustering (experts 11–13).</figcaption>
-  </figure>
-</div>
 
 ---
 
