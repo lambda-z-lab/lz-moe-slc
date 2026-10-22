@@ -46,7 +46,7 @@ Given a latent token representation $\mathbf{x}_i \in \mathbb{R}^{d_l}$, the rou
 
 $$A_{ij} = \frac{\mathbf{x}_i^\top \mathbf{w}_j}{\sqrt{d_\ell}},$$
 
-which functions as a scaled inner product. Letting $k$ denote the routing sparsity level (i.e., the number of selected experts per token), we define the per-token mean routing utility as the average selected affinity for a binary assignment matrix $P \in \{0, 1\}^{N \times E_r}$ subject to $\sum_{j=1}^{E_r} P_{ij} = k$:
+which functions as a scaled inner product. Letting $k$ denote the routing sparsity level (i.e., the number of selected experts per token), we define the per-token mean routing utility as the average selected affinity for a binary assignment matrix $P \in \{0,1\}^{N \times E_r}$ subject to $\sum_{j=1}^{E_r} P_{ij} = k$:
 
 $$U(P, \mathbf{W}) = \frac{1}{N} \sum_{i=1}^{N} \sum_{j=1}^{E_r} P_{ij} A_{ij}.$$
 
