@@ -169,18 +169,40 @@ To visualize these structural differences, the plots in the master diagnostic st
 
 ## 🚀 Quick Start & Benchmarking
 
-You can verify the routing mechanisms and test stochastic load-skew recovery directly through interactive Python (`IPython`):
+You can verify the routing mechanisms and test stochastic load-skew recovery in two ways:
+
+### Option 1: Run as a Standalone Script (Recommended)
+Execute the benchmarking suite directly from your terminal:
+
+```bash
+python -c '
+import torch
+from benchmarks.benchmark_routers import run_benchmark
+
+torch.manual_seed(42)
+print("--- Benchmarking Router Variant: SLC ---")
+run_benchmark("SLC", steps=150)
+
+print("\n--- Benchmarking Router Variant: DeepSeekBias ---")
+run_benchmark("DeepSeekBias", steps=150)
+'
+```
+
+### Option 2: Interactive Exploration (IPython)
+
+If you prefer an interactive session to inspect internal tensors or dual states:
 
 ```bash
 python -m IPython
 ```
 
 ```python
-In [1]: import torch
-In [2]: from benchmarks.benchmark_routers import run_benchmark
-In [3]: torch.manual_seed(42)
-   ...: run_benchmark("SLC", steps=150)
-   ...: run_benchmark("DeepSeekBias", steps=150)
+import torch
+from benchmarks.benchmark_routers import run_benchmark
+
+torch.manual_seed(42)
+run_benchmark("SLC", steps=150)
+run_benchmark("DeepSeekBias", steps=150)
 ```
 
 ### Expected Benchmark Output
