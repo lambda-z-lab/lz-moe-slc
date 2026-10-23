@@ -8,7 +8,7 @@
 [![Control Theory](https://img.shields.io/badge/Domain-Stochastic%20Control-blueviolet)](https://github.com/lambda-z-lab/lz-moe-slc)
 [![Research-Lambda-Z-Lab](https://img.shields.io/badge/Research-Lambda--Z--Lab-purple.svg)](https://github.com/lambda-z-lab)
 
-> **Official Research Paper Draft & Companion Code**
+> **Official Research: Paper Draft & Companion Code**
 > 
 > **Title:** *Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts*  
 > **Author:** Carl Johan Rehn (Lambda-Z-Lab)  
