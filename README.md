@@ -240,7 +240,7 @@ If you build upon this research, utilize the theoretical framework, or reference
   author       = {Rehn, Carl Johan},
   title        = {{\textit{Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts}}},
   year         = {2026},
-  note         = {Available at \url{https://github.com/lambda-z-lab/lz-moe-slc/blob/main/docs/technical_report.pdf}. Zenodo DOI: \url{https://doi.org/10.5281/zenodo.23214045}.}
+  note         = {Available at \url{https://github.com/lambda-z-lab/lz-moe-slc/blob/main/main.pdf}. Zenodo DOI: \url{https://doi.org/10.5281/zenodo.23214045}.}
 }
 
 @misc{rehn2026code,
