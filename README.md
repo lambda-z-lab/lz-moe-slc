@@ -233,16 +233,22 @@ pytest tests/test_routers.py
 
 ## 📖 Citation
 
-If you build upon this research, utilize the theoretical framework, or reference this code base, please cite it using the following BibTeX entry:
+If you build upon this research, utilize the theoretical framework, or reference this code base, please cite it using the following BibTeX entries:
 
 ```bibtex
-@software{rehn2026lzmoeslc,
-  author = {Rehn, Carl Johan},
-  title = {Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts: Companion Code},
-  year = {2026},
-  publisher = {Zenodo},
-  doi = {10.5281/zenodo.23214045},
-  url = {https://github.com/lambda-z-lab/lz-moe-slc}
+@misc{rehn2026technical,
+  author       = {Rehn, Carl Johan},
+  title        = {{\textit{Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts}}},
+  year         = {2026},
+  note         = {Available at \url{https://github.com/lambda-z-lab/lz-moe-slc/blob/main/docs/technical_report.pdf}. Zenodo DOI: \url{https://doi.org/10.5281/zenodo.23214045}.}
+}
+
+@misc{rehn2026code,
+  author       = {Rehn, Carl Johan},
+  title        = {{Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts}: {Companion Source Code and Benchmarks}},
+  year         = {2026},
+  howpublished = {GitHub Repository},
+  note         = {Available at \url{https://github.com/lambda-z-lab/lz-moe-slc}. Zenodo DOI: \url{https://doi.org/10.5281/zenodo.23214045}.}
 }
 ```
 
