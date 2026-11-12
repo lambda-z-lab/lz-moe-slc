@@ -29,7 +29,7 @@ The primary theoretical framework, optimization proofs, and empirical evaluation
 
 ### 📐 Mathematical Technical Notes
 Rigorous proofs and supplemental derivations:
-* **[📥 Theoretical Foundation of Hard Top-k Primal Routing (PDF)](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/docs/tech_note_k_top_proof.pdf?raw=true)**  
+* **[📥 Theoretical Foundation of Hard Top-k Primal Routing (PDF)](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_k_top_proof.pdf?raw=true)**  
   *Formal treatment of the token-to-expert dispatch mechanism through convex optimization, proving that the hard Top-k operator over duality-adjusted affinities yields an exact closed-form solution.*
 
 ### 📝 Conceptual Articles (Medium)
