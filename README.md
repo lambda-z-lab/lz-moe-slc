@@ -4,17 +4,40 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23214045.svg)](https://doi.org/10.5281/zenodo.23214045)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![PyTorch CPU](https://img.shields.io/badge/PyTorch-CPU%20Compatible-orange.svg)](https://pytorch.org/)
-[![DeepSeek](https://img.shields.io/badge/Baseline-DeepSeek-4D6BFE)](https://github.com/lambda-z-lab/lz-moe-slc)
-[![Control Theory](https://img.shields.io/badge/Domain-Stochastic%20Control-blueviolet)](https://github.com/lambda-z-lab/lz-moe-slc)
 [![Research-Lambda-Z-Lab](https://img.shields.io/badge/Research-Lambda--Z--Lab-purple.svg)](https://github.com/lambda-z-lab)
 
-> **Official Research: Paper Draft & Companion Code**
+> **Repository Overview**  
+> Historically, Mixture-of-Experts load balancing relies on heuristic auxiliary loss terms with rigid hyperparameters that cause numerical instability and high sensitivity to noise. To overcome these limitations, this repository provides a complete PyTorch implementation, benchmarking suite, and theoretical whitepaper evaluating two auxiliary-loss-free routing mechanisms:
 > 
-> **Title:** *Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts*  
+> 1. **Stochastic Augmented Lagrangian Control (SLC):** Casts token routing as a formal constrained optimization problem, employing dual shadow prices and an augmented Lagrangian function to enforce strict capacity constraints via robust two-timescale saddle-point updates.
+> 2. **Proportional Bias Routing:** Formalizes the control strategy popularized by DeepSeek, utilizing mean-preserving proportional feedback integrators driven by hard token dispatch counts.
+> 
 > **Author:** Carl Johan Rehn (Lambda-Z-Lab)  
 > 
-> * **[📥 Download Full Pre-print Draft (PDF)](main.pdf)**
+> * **[📥 Download Core Research Paper (PDF)](main.pdf)**
 > * **[⚡ Jump to Quick Start & Benchmarking](#-quick-start--benchmarking)**
+
+---
+
+## 📚 Documentation, Articles & Technical Notes
+
+The primary theoretical framework, optimization proofs, and empirical evaluations are detailed in the core research paper. Supporting technical notes and explanatory articles are provided below.
+
+### 📄 Core Research Paper
+* **[📥 Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts (PDF)](main.pdf)**  
+  *The foundational whitepaper covering the complete augmented Lagrangian control framework, spectral analysis, and regime-switching stress tests.*
+
+### 📐 Mathematical Technical Notes
+Rigorous proofs and supplemental derivations:
+* **[📥 Theoretical Foundation of Hard Top-k Primal Routing (PDF)](docs/tech_note_k_top_proof.pdf)**  
+  *Formal treatment of the token-to-expert dispatch mechanism through convex optimization, proving that the hard Top-k operator over duality-adjusted affinities yields an exact closed-form solution.*
+
+### 📝 Conceptual Articles (Medium)
+Accessible, narrative-driven walkthroughs of the core mechanics:
+* **[Avoiding Expert Collapse in Mixture-of-Experts with Stochastic Control](https://medium.com/@care02/avoiding-expert-collapse-in-mixture-of-experts-with-stochastic-control-59e2b3ba4a3e)**  
+  *[`[Local Markdown Backup]`](docs/medium_expert_collapse.md)*
+* **[Demystifying Top-k Routing: Why Hard Selection Is Not Just a Heuristic](https://medium.com/@care02/demystifying-top-k-routing-why-hard-selection-is-not-just-a-heuristic-ae9075380b8c)**  
+  *[`[Local Markdown Backup]`](docs/medium_top_k_routing.md)*
 
 ---
 
