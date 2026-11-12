@@ -92,7 +92,7 @@ SLC’s self-correcting dual variables provide a self-regulating, "set-and-forge
 
 ### Open Science & Reproducibility
 To ensure full transparency, all code, execution scripts, and working mathematical notes are publicly accessible:
-* **[Technical Report (PDF):](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/main.pdff?raw=true)** Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts.
+* **[Technical Report (PDF):](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/main.pdf?raw=true)** Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts.
 * **[GitHub Repository](https://github.com/lambda-z-lab/lz-moe-slc):** Complete PyTorch implementation of the Lagrangian Router and benchmarking suite.
 * **[Zenodo Archive & DOI](https://doi.org/10.5281/zenodo.23214045):** A frozen, version-controlled snapshot of the experimental codebase.
 
