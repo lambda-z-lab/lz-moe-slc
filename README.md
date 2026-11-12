@@ -14,7 +14,7 @@
 > 
 > **Author:** Carl Johan Rehn (Lambda-Z-Lab)  
 > 
-> * **[📥 Download Core Research Paper (PDF)](main.pdf)**
+> * **[📥 Download Core Research Paper (PDF)](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/main.pdf?raw=true)**
 > * **[⚡ Jump to Quick Start & Benchmarking](#-quick-start--benchmarking)**
 
 ---
@@ -24,20 +24,20 @@
 The primary theoretical framework, optimization proofs, and empirical evaluations are detailed in the core research paper. Supporting technical notes and explanatory articles are provided below.
 
 ### 📄 Core Research Paper
-* **[📥 Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts (PDF)](main.pdf)**  
+* **[📥 Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts (PDF)](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/main.pdf?raw=true)**  
   *The foundational whitepaper covering the complete augmented Lagrangian control framework, spectral analysis, and regime-switching stress tests.*
 
 ### 📐 Mathematical Technical Notes
 Rigorous proofs and supplemental derivations:
-* **[📥 Theoretical Foundation of Hard Top-k Primal Routing (PDF)](docs/tech_note_k_top_proof.pdf)**  
+* **[📥 Theoretical Foundation of Hard Top-k Primal Routing (PDF)](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/docs/tech_note_k_top_proof.pdf?raw=true)**  
   *Formal treatment of the token-to-expert dispatch mechanism through convex optimization, proving that the hard Top-k operator over duality-adjusted affinities yields an exact closed-form solution.*
 
 ### 📝 Conceptual Articles (Medium)
 Accessible, narrative-driven walkthroughs of the core mechanics:
 * **[Avoiding Expert Collapse in Mixture-of-Experts with Stochastic Control](https://medium.com/@care02/avoiding-expert-collapse-in-mixture-of-experts-with-stochastic-control-59e2b3ba4a3e)**  
-  *[`[Local Markdown Backup]`](docs/medium_expert_collapse.md)*
+  *[`[Local Markdown Backup]`](doc/medium_expert_collapse.md)*
 * **[Demystifying Top-k Routing: Why Hard Selection Is Not Just a Heuristic](https://medium.com/@care02/demystifying-top-k-routing-why-hard-selection-is-not-just-a-heuristic-ae9075380b8c)**  
-  *[`[Local Markdown Backup]`](docs/medium_top_k_routing.md)*
+  *[`[Local Markdown Backup]`](doc/medium_top_k_routing.md)*
 
 ---
 
