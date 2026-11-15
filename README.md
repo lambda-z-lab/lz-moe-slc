@@ -31,6 +31,8 @@ The primary theoretical framework, optimization proofs, and empirical evaluation
 Rigorous proofs and supplemental derivations:
 * **[📥 Theoretical Foundation of Hard Top-k Primal Routing (PDF)](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_k_top_proof.pdf?raw=true)**  
   *Formal treatment of the token-to-expert dispatch mechanism through convex optimization, proving that the hard Top-k operator over duality-adjusted affinities yields an exact closed-form solution.*
+* **[📥 Foundations of Sparse Mixture-of-Experts Routing (PDF)](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_foundations_1.pdf?raw=true)**  
+  *Part I: Stochastic Resource Allocation, Token Geometries, and Empirical Estimation Infrastructure.*
 
 ### 📝 Conceptual Articles (Medium)
 Accessible, narrative-driven walkthroughs of the core mechanics:
@@ -38,6 +40,8 @@ Accessible, narrative-driven walkthroughs of the core mechanics:
   *[`[Local Markdown Backup]`](doc/medium_expert_collapse.md)*
 * **[Demystifying Top-k Routing: Why Hard Selection Is Not Just a Heuristic](https://medium.com/@care02/demystifying-top-k-routing-why-hard-selection-is-not-just-a-heuristic-ae9075380b8c)**  
   *[`[Local Markdown Backup]`](doc/medium_top_k_routing.md)*
+* **[Cracking the MoE Routing Problem: Why Stochastic Control Beats Heuristic Fixes](https://medium.com/@care02/cracking-the-moe-routing-problem-why-stochastic-control-beats-heuristic-fixes-97f81ab919d2)**  
+  *[`[Local Markdown Backup]`](doc/medium_cracking_moe_routing.md)*
 
 ---
 
