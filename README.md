@@ -25,17 +25,21 @@ The primary theoretical framework, optimization proofs, and empirical evaluation
 
 ### 📄 Core Research Paper
 * **[📥 Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts (PDF)](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/main.pdf?raw=true)**  
-  *The foundational whitepaper covering the complete augmented Lagrangian control framework, spectral analysis, and regime-switching stress tests.*
+  *The foundational whitepaper covering the complete augmented Lagrangian control framework, spectral analysis, and regime-switching stress tests.*  
+  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24283170.svg)](https://doi.org/10.5281/zenodo.24283170)
 
 ### 📐 Mathematical Technical Notes
 Rigorous proofs and supplemental derivations:
 * **[📥 Theoretical Foundation of Hard Top-k Primal Routing (PDF)](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_k_top_proof.pdf?raw=true)**  
-  *Formal treatment of the token-to-expert dispatch mechanism through convex optimization, proving that the hard Top-k operator over duality-adjusted affinities yields an exact closed-form solution.*
+  *Polyhedral Exactness and Matroid Optimality in Sparse Mixture-of-Experts.*  
+  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24284084.svg)](https://doi.org/10.5281/zenodo.24284084)
+
 * **[📥 Foundations of Sparse Mixture-of-Experts Routing (PDF)](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_foundations_1.pdf?raw=true)**  
-  *Part I: Stochastic Resource Allocation, Token Geometries, and Empirical Estimation Infrastructure.*
+  *Part I: Stochastic Resource Allocation, Token Geometries, and Empirical Estimation.*  
+  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24284691.svg)](https://doi.org/10.5281/zenodo.24284691)
 
 ### 📝 Conceptual Articles (Medium)
-Accessible, narrative-driven walkthroughs of the core mechanics:
+Accessible, narrative-driven walkthroughs of the core mechanics *(Note: Each article links back to this repository for authoritative technical notes and reference code)*:
 * **[Avoiding Expert Collapse in Mixture-of-Experts with Stochastic Control](https://medium.com/@care02/avoiding-expert-collapse-in-mixture-of-experts-with-stochastic-control-59e2b3ba4a3e)**  
   *[`[Local Markdown Backup]`](doc/medium_expert_collapse.md)*
 * **[Demystifying Top-k Routing: Why Hard Selection Is Not Just a Heuristic](https://medium.com/@care02/demystifying-top-k-routing-why-hard-selection-is-not-just-a-heuristic-ae9075380b8c)**  

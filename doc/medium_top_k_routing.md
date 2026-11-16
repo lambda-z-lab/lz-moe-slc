@@ -98,8 +98,12 @@ Discrete selection is not a departure from principled mathematics—it is the di
 
 ### Open Science & Reproducibility
 To explore the mathematical derivations, complete proof structures, and open-source implementations behind Lagrangian routing and polyhedral exactness, all project materials are publicly accessible:
-* **[Technical Note (PDF):](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_k_top_proof.pdf?raw=true)** Read the formal mathematical proof on polyhedral exactness and matroid optimality.
-* **[Technical Report (PDF):](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/main.pdf?raw=true)** Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts.
-* **[Companion Article (Medium):](https://medium.com/@care02/avoiding-expert-collapse-in-mixture-of-experts-with-stochastic-control-59e2b3ba4a3e?postPublishedType=repub)** Avoiding Expert Collapse in Mixture-of-Experts with Stochastic Control.
-* **[GitHub Repository](https://github.com/lambda-z-lab/lz-moe-slc):** Complete PyTorch implementation of the Lagrangian Router, control components, and benchmarking scripts.
-* **[Zenodo Archive & DOI](https://doi.org/10.5281/zenodo.23214045):** A frozen, version-controlled snapshot of the experimental codebase and documentation.
+
+* **[Technical Note (PDF):](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_k_top_proof.pdf?raw=true)** Formal mathematical proof on polyhedral exactness and matroid optimality for hard Top-$k$ selection.
+* **[Core Technical Report (PDF):](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/main.pdf?raw=true)** *Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts.*
+* **[GitHub Repository:](https://github.com/lambda-z-lab/lz-moe-slc)** Complete PyTorch implementation of the Lagrangian Router, control components, and benchmarking scripts.
+* **[Zenodo Archive & DOI:](https://doi.org/10.5281/zenodo.23214045)** A frozen, version-controlled snapshot of the experimental codebase and documentation.
+* **[ORCID Profile:](https://orcid.org/0009-0002-7844-0770)** Verified researcher record (`0009-0002-7844-0770`).
+
+*Read the rest of the series:*
+* **[Avoiding Expert Collapse in Mixture-of-Experts with Stochastic Control](https://medium.com/@care02/avoiding-expert-collapse-in-mixture-of-experts-with-stochastic-control-59e2b3ba4a3e)**
