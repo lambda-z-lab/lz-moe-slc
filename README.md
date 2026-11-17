@@ -46,6 +46,8 @@ Accessible, narrative-driven walkthroughs of the core mechanics *(Note: Each art
   *[`[Local Markdown Backup]`](doc/medium_top_k_routing.md)*
 * **[Cracking the MoE Routing Problem: Why Stochastic Control Beats Heuristic Fixes](https://medium.com/@care02/cracking-the-moe-routing-problem-why-stochastic-control-beats-heuristic-fixes-97f81ab919d2)**  
   *[`[Local Markdown Backup]`](doc/medium_cracking_moe_routing.md)*
+* **[Beyond Heuristics: How Stochastic Augmented Lagrangian Control Benefits Expert Selection in MoE](https://medium.com/@care02/beyond-heuristics-how-stochastic-augmented-lagrangian-control-benefits-expert-selection-in-moe-ec4496cdb8a8)**  
+  *[`[Local Markdown Backup]`](doc/medium_beyond_heuristics.md)*
 
 ---
 
