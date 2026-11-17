@@ -87,3 +87,24 @@ To explore the mathematical derivations, complete proof structures, and open-sou
 * **[Companion Article (Medium):](https://medium.com/@care02/avoiding-expert-collapse-in-mixture-of-experts-with-stochastic-control-59e2b3ba4a3e?postPublishedType=repub)** Avoiding Expert Collapse in Mixture-of-Experts with Stochastic Control.
 * **[GitHub Repository](https://github.com/lambda-z-lab/lz-moe-slc):** Complete PyTorch implementation of the Lagrangian Router, control components, and benchmarking scripts.
 * **[Zenodo Archive & DOI](https://doi.org/10.5281/zenodo.23214045):** A frozen, version-controlled snapshot of the experimental codebase and documentation.
+
+---
+
+### Open Science & Reproducibility
+To explore the mathematical derivations, complete proof structures, and open-source implementations behind Lagrangian routing, all project materials are publicly accessible:
+
+**Formal Research & Technical Notes:**
+* **[Core Technical Report (PDF):](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/main.pdf?raw=true)** *Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts.* ([Zenodo Record](https://doi.org/10.5281/zenodo.24283170))
+* **[Technical Note (PDF):](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_foundations_1.pdf?raw=true)** *Foundations of Sparse Mixture-of-Experts Routing Part — I* ([Zenodo Record](https://doi.org/10.5281/zenodo.24284691))
+
+**Code & Archives:**
+* **[GitHub Repository:](https://github.com/lambda-z-lab/lz-moe-slc)** Complete PyTorch implementation of the Lagrangian Router, control components, and benchmarking scripts.
+* **[Zenodo Software Concept DOI:](https://doi.org/10.5281/zenodo.23214045)** Version-controlled snapshots and software archives.
+* **[ORCID Record:](https://orcid.org/0009-0002-7844-0770)** Verified independent researcher profile (`0009-0002-7844-0770`).
+
+**Series: Demystifying Mixture-of-Experts Routing**
+1. *[Avoiding Expert Collapse in Mixture-of-Experts with Stochastic Control](https://medium.com/@care02/avoiding-expert-collapse-in-mixture-of-experts-with-stochastic-control-59e2b3ba4a3e)*
+2. *[Demystifying Top-k Routing: Why Hard Selection Is Not Just a Heuristic](https://medium.com/@care02/demystifying-top-k-routing-why-hard-selection-is-not-just-a-heuristic-ae9075380b8c)*
+3. *[Cracking the MoE Routing Problem: Why Stochastic Control Beats Heuristic Fixes](https://medium.com/@care02/cracking-the-moe-routing-problem-why-stochastic-control-beats-heuristic-fixes-97f81ab919d2)*
+4. *[Beyond Heuristics: How Stochastic Augmented Lagrangian Control Benefits Expert Selection in MoE](https://medium.com/@care02/beyond-heuristics-how-stochastic-augmented-lagrangian-control-benefits-expert-selection-in-moe-ec4496cdb8a8)*
+5. *[Part 5 — Forthcoming]*

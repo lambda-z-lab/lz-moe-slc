@@ -4,6 +4,8 @@
 
 In long-running training regimes, standard auxiliary-loss-based MoEs frequently suffer from what can be termed “Expert Rot”—a pathological manifestation of the Matthew effect (“the rich get richer”)—where a small subset of popular experts captures the majority of token dispatches early, leaving the remainder of the model as dormant dead weight. To overcome these structural limitations, we advocate a return to first-principles constrained optimization and control theory. 
 
+---
+
 ### Why Heuristic Fixes Fall Short
 DeepSeek-style routing attempts to fix imbalance through proportional bias adjustment, but this frequently destabilizes the primary loss manifold. 
 
@@ -24,6 +26,8 @@ To push the system to its limits, we also designed a **regime-switching stress t
 * This tested whether an Augmented Lagrangian controller could dynamically rescue a heavily pre-conditioned, suboptimal state mid-flight.
 
 Our evaluation proceeds along two core dimensions: (i) primal-dual convergence dynamics and stability and (ii) latent space geometry and expert micro-specialization.
+
+---
 
 ### 1. Primal-Digital Convergence and Duality Gaps
 A primary advantage of formulating load balancing through an augmented Lagrangian is having an explicit optimization-theoretic convergence metric: **the duality gap**. To ensure clear visibility against high-frequency stochastic training noise, the trajectories of primal utility, dual objective value, and duality gap are smoothed via a rolling window-mean of 250 steps.
@@ -60,6 +64,8 @@ A primary advantage of formulating load balancing through an augmented Lagrangia
 
 Quantitatively, SLC achieved a lower window-mean validation loss (1.6991 vs 1.7040) while reducing maximum load violation by nearly two orders of magnitude (0.0057 vs 0.5410). This came with a negligible computational overhead ("control tax")—a minor \approx 1.1% throughput reduction (269.23 vs 272.18 it/min) due to the dual updates.
 
+---
+
 ### 2. Expert Geometry, Diversity, and Micro-Clustering
 Beyond token counts, what happens to the internal representation of the experts? 
 
@@ -85,18 +91,36 @@ To visualize these structural differences, the diagnostic stacks below map the c
 
 Our spectral analysis reveals that SLC achieves more than just uniform token counts; it balances the informational quality of the experts. By forcing the centroid singular values to an optimal spectral spread and pushing pairwise cosine similarities near orthogonality, SLC ensures that the router treats the expert pool as true independent basis vectors for the latent data distribution. The model is not merely routing tokens—it is discovering a structured, orthogonal functional basis.
 
+---
+
 ### Scalability to Massive Sparse Architectures
 As transformer scaling pushes beyond hundreds of conditional experts (e.g., Mixtral, DeepSeek, and beyond), manual hyperparameter tuning for static auxiliary losses becomes an intractable trial-and-error bottleneck (*"loss-weight hunting"*). 
 
 SLC’s self-correcting dual variables provide a self-regulating, "set-and-forget" stability mechanism, offering a mathematically certified foundation for the next generation of massive-scale sparse models without the need for manual weight tuning.
 
-### Open Science & Reproducibility
-To ensure full transparency, all code, execution scripts, and working mathematical notes are publicly accessible:
-* **[Technical Report (PDF):](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/main.pdf?raw=true)** Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts.
-* **[GitHub Repository](https://github.com/lambda-z-lab/lz-moe-slc):** Complete PyTorch implementation of the Lagrangian Router and benchmarking suite.
-* **[Zenodo Archive & DOI](https://doi.org/10.5281/zenodo.23214045):** A frozen, version-controlled snapshot of the experimental codebase.
+---
 
 ### Conclusions
 This work bridges classical optimization theory and modern auxiliary-loss-free Mixture-of-Experts routing. By formulating expert load balancing as a constrained utility-maximization problem, Stochastic Augmented Lagrangian Control provides rigorous saddle-point stability and dynamic control. 
 
 By showing that these advanced control-theoretic mechanisms operate efficiently on standard consumer hardware, we demonstrate that rigorous mathematical foundations for LLMs can be researched, tested, and reproduced outside of massive industrial cluster environments.
+
+---
+
+### Open Science & Reproducibility
+To ensure full transparency, all code, execution scripts, and working mathematical notes are publicly accessible:
+
+**Formal Research & Technical Notes:**
+* **[Core Technical Report (PDF):](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/main.pdf?raw=true)** *Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts.* ([Zenodo Record](https://doi.org/10.5281/zenodo.24283170))
+
+**Code & Archives:**
+* **[GitHub Repository:](https://github.com/lambda-z-lab/lz-moe-slc)** Complete PyTorch implementation of the Lagrangian Router, control components, and benchmarking scripts.
+* **[Zenodo Software Concept DOI:](https://doi.org/10.5281/zenodo.23214045)** Version-controlled snapshots and software archives.
+* **[ORCID Record:](https://orcid.org/0009-0002-7844-0770)** Verified independent researcher profile (`0009-0002-7844-0770`).
+
+**Series: Demystifying Mixture-of-Experts Routing**
+1. *[Avoiding Expert Collapse in Mixture-of-Experts with Stochastic Control](https://medium.com/@care02/avoiding-expert-collapse-in-mixture-of-experts-with-stochastic-control-59e2b3ba4a3e)*
+2. *[Demystifying Top-k Routing: Why Hard Selection Is Not Just a Heuristic](https://medium.com/@care02/demystifying-top-k-routing-why-hard-selection-is-not-just-a-heuristic-ae9075380b8c)*
+3. *[Cracking the MoE Routing Problem: Why Stochastic Control Beats Heuristic Fixes](https://medium.com/@care02/cracking-the-moe-routing-problem-why-stochastic-control-beats-heuristic-fixes-97f81ab919d2)*
+4. *[Beyond Heuristics: How Stochastic Augmented Lagrangian Control Benefits Expert Selection in MoE](https://medium.com/@care02/beyond-heuristics-how-stochastic-augmented-lagrangian-control-benefits-expert-selection-in-moe-ec4496cdb8a8)*
+5. *[Part 5 — Forthcoming]*
