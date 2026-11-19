@@ -33,10 +33,12 @@ Rigorous proofs and supplemental derivations:
 * **[📥 Theoretical Foundation of Hard Top-k Primal Routing (PDF)](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_k_top_proof.pdf?raw=true)**  
   *Polyhedral Exactness and Matroid Optimality in Sparse Mixture-of-Experts.*  
   [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24284084.svg)](https://doi.org/10.5281/zenodo.24284084)
-
 * **[📥 Foundations of Sparse Mixture-of-Experts Routing (PDF)](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_foundations_1.pdf?raw=true)**  
   *Part I: Stochastic Resource Allocation, Token Geometries, and Empirical Estimation.*  
   [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24284691.svg)](https://doi.org/10.5281/zenodo.24284691)
+* **[📥 Foundations of Sparse Mixture-of-Experts Routing (PDF)](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_foundations_2.pdf?raw=true)**  
+  *Part II: Stochastic Augmented Lagrangian Control and Saddle-Point Dynamics.*  
+  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24365808.svg)](https://doi.org/10.5281/zenodo.24365808)
 
 ### 📝 Conceptual Articles (Medium)
 Accessible, narrative-driven walkthroughs of the core mechanics *(Note: Each article links back to this repository for authoritative technical notes and reference code)*:
