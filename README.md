@@ -39,6 +39,9 @@ Rigorous proofs and supplemental derivations:
 * **[📥 Foundations of Sparse Mixture-of-Experts Routing (PDF)](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_foundations_2.pdf?raw=true)**  
   *Part II: Stochastic Augmented Lagrangian Control and Saddle-Point Dynamics.*  
   [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24365808.svg)](https://doi.org/10.5281/zenodo.24365808)
+* **[📥 Foundations of Sparse Mixture-of-Experts Routing (PDF)](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_foundations_3.pdf?raw=true)**  
+  *Part III: Proportional Bias Routing and Primal-Dual Unification.*  
+  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24368302.svg)](https://doi.org/10.5281/zenodo.24368302)
 
 ### 📝 Conceptual Articles (Medium)
 Accessible, narrative-driven walkthroughs of the core mechanics *(Note: Each article links back to this repository for authoritative technical notes and reference code)*:
