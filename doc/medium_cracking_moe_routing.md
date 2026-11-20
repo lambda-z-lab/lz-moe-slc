@@ -81,16 +81,6 @@ Best of all, because these stochastic approximations and noise-filtering mechani
 ---
 
 ### Open Science & Reproducibility
-To explore the mathematical derivations, complete proof structures, and open-source implementations behind Lagrangian MoE routing and stochastic resource allocation, all project materials are publicly accessible:
-* **[Technical Note (PDF):](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_foundations_1.pdf?raw=true)** Foundations of Sparse Mixture-of-Experts Routing.
-* **[Technical Report (PDF):](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/main.pdf?raw=true)** Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts.
-* **[Companion Article (Medium):](https://medium.com/@care02/avoiding-expert-collapse-in-mixture-of-experts-with-stochastic-control-59e2b3ba4a3e?postPublishedType=repub)** Avoiding Expert Collapse in Mixture-of-Experts with Stochastic Control.
-* **[GitHub Repository](https://github.com/lambda-z-lab/lz-moe-slc):** Complete PyTorch implementation of the Lagrangian Router, control components, and benchmarking scripts.
-* **[Zenodo Archive & DOI](https://doi.org/10.5281/zenodo.23214045):** A frozen, version-controlled snapshot of the experimental codebase and documentation.
-
----
-
-### Open Science & Reproducibility
 To explore the mathematical derivations, complete proof structures, and open-source implementations behind Lagrangian routing, all project materials are publicly accessible:
 
 **Formal Research & Technical Notes:**

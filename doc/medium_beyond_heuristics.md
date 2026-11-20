@@ -85,7 +85,7 @@ To explore the mathematical derivations, complete proof structures, and open-sou
 
 **Formal Research & Technical Notes:**
 * **[Core Technical Report (PDF):](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/main.pdf?raw=true)** *Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts.* ([Zenodo Record](https://doi.org/10.5281/zenodo.24283170))
-* **[Technical Note (PDF):](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_foundations_2.pdf?raw=true)** *Foundations of Sparse Mixture-of-Experts Routing Part — II* ([Zenodo Record](https://doi.org/10.5281/zenodo.24284691))
+* **[Technical Note (PDF):](https://github.com/lambda-z-lab/lz-moe-slc/blob/main/doc/tech_note_foundations_2.pdf?raw=true)** *Foundations of Sparse Mixture-of-Experts Routing Part — II* ([Zenodo Record](https://doi.org/10.5281/zenodo.24365808))
 
 **Code & Archives:**
 * **[GitHub Repository:](https://github.com/lambda-z-lab/lz-moe-slc)** Complete PyTorch implementation of the Lagrangian Router, control components, and benchmarking scripts.
