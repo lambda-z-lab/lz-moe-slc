@@ -20,8 +20,8 @@ keywords:
   - "Stochastic Control"
   - "Constrained Optimization"
 license: "MIT"
-version: "1.0.1"
-date-released: "2026-10-08"
+version: "1.1.0"
+date-released: "2026-11-21"
 preferred-citation:
   type: report
   title: "Stochastic Lagrangian Control and Proportional Bias Routing for Mixture-of-Experts"
@@ -30,7 +30,7 @@ preferred-citation:
       given-names: "Carl Johan"
       orcid: "https://orcid.org/0009-0002-7844-0770"
   year: 2026
-  month: 10
+  month: 11
   institution: "The Lambda-Z Project"
   url: "https://github.com/lambda-z-lab/lz-moe-slc/blob/main/main.pdf"
   notes: "Independent Research Preprint / Technical Whitepaper"
