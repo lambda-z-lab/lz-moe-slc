@@ -4,6 +4,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23214045.svg)](https://doi.org/10.5281/zenodo.23214045)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![PyTorch CPU](https://img.shields.io/badge/PyTorch-CPU%20Compatible-orange.svg)](https://pytorch.org/)
+[![ORCID](https://img.shields.io/badge/ORCID-0009--0002--7844--0770-A6CE39?logo=orcid&logoColor=white)](https://orcid.org/0009-0002-7844-0770)
 [![Research-Lambda-Z-Lab](https://img.shields.io/badge/Research-Lambda--Z--Lab-purple.svg)](https://github.com/lambda-z-lab)
 
 > **Repository Overview**  
